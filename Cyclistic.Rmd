@@ -90,7 +90,7 @@ install.packages("tidyverse")
 
 Nota: En la version de escritorio esto solo se hace una vez, ya que los paquetes quedan instalados y disponibles para todos los futuros proyectos y solo debemos cargarlos para utilizarlos.
 
-### Cargamos las librerias a tuilizar
+### Cargamos las librerias a utilizar
 
 ```{r librerias, message=FALSE, warning=FALSE}
 library(tidyverse)
