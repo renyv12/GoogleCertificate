@@ -1,0 +1,723 @@
+---
+title: "Google Caso Práctico - Cyclistic "
+author: "RenyV"
+date: "2024-08-20"
+output:
+  html_document:
+    df_print: paged
+---
+
+**Caso práctico: ¿Cómo lograr el éxito rápido de un negocio de bicicletas compartidas?**
+
+# Introducción
+
+Bienvenido al caso práctico del análisis de bicicletas compartidas Cyclistic. En este caso práctico, realizarás muchas tareas del mundo real, típicas de un analista de datos júnior. Trabajarás para una empresa ficticia llamada Cyclistic y conocerás a diferentes personajes y miembros del equipo. Para responder a las preguntas clave de la empresa, seguirás los pasos del proceso de análisis de datos: **preguntar, preparar, procesar, analizar, compartir** y **actuar**. En este proceso, las tablas del **mapa de ruta de caso práctico**, incluidas las preguntas orientativas y las tareas clave, te ayudarán a mantenerte en el camino correcto.
+
+# Escenario
+
+Eres un analista de datos júnior que trabaja en el equipo de analistas de marketing de Cyclistic, una empresa de bicicletas compartidas de Chicago. La directora de marketing cree que el éxito futuro de la empresa depende de maximizar la cantidad de membresías anuales. Por lo tanto, tu equipo quiere entender qué diferencias existen en el uso de las bicicletas Cyclistic entre los ciclistas ocasionales y los miembros anuales. A través de estos conocimientos, tu equipo diseñará una nueva estrategia de marketing para convertir a los ciclistas ocasionales en miembros anuales. Sin embargo, antes de eso, los ejecutivos de Cyclistic deben aprobar tus recomendaciones; por eso, debes respaldar tu propuesta con una visión convincente de los datos y visualizaciones profesionales de los mismos.
+
+# Personajes y equipos
+
+●     **Cyclistic:** Un programa de bicicletas compartidas que incluye 5,800 bicicletas y 600 estaciones. Cyclistic se destaca por ofrecer también bicicletas reclinadas, triciclos manuales y bicicletas de carga que ofrecen un uso más inclusivo de las bicicletas compartidas para las personas con discapacidad y los ciclistas que no pueden utilizar una bicicleta estándar de dos ruedas. La mayoría de los ciclistas eligen las bicicletas tradicionales, alrededor de un 8% de los ciclistas usan las opciones asistidas. Los usuarios de Cyclistic son más propensos a utilizar la bicicleta para recreación, pero alrededor del 30% la utiliza para ir al trabajo cada día.
+
+●     **Lily Moreno:** La directora de marketing y tu gerente. Moreno es responsable del desarrollo de campañas e iniciativas para promover el programa de bicicletas compartidas. Las campañas pueden incluir correo electrónico, redes sociales y otros canales.
+
+●     **Equipo de análisis computacional de datos de marketing de Cyclistic:** Un equipo de analistas de datos que se encargan de recopilar, analizar e informar datos que ayudan a conducir la estrategia de marketing de Cyclistic. Te incorporaste a este equipo hace seis meses y te has dedicado no solo a conocer la misión y las metas de negocios de Cyclistic, sino también a ver cómo puedes ayudar a Cyclistic a lograrlo, desde tu posición de analista de datos júnior.
+
+●     **Equipo ejecutivo de Cyclistic:** El equipo ejecutivo, sumamente detallista, decidirá si aprueba el programa de marketing recomendado.
+
+# Acerca de la empresa
+
+En 2016, Cyclistic lanzó una exitosa oferta de bicicletas compartidas. Desde entonces, el programa creció hasta alcanzar una flota de 5,824 bicicletas georreferenciadas y bloqueadas en una red de 692 estaciones en toda Chicago. Las bicicletas se pueden desbloquear desde una estación y devolverse en cualquier otra estación del sistema en cualquier momento.
+
+Hasta ahora, la estrategia de marketing de Cyclistic se basaba en la construcción de un reconocimiento de marca general y en atraer a amplios segmentos de consumidores. Uno de los enfoques que ayudó a hacer esto posible fue la flexibilidad de sus planes de precios: pases de un solo viaje, pases de un día completo y membresías anuales. A los clientes que compran pases de un solo viaje o pases de un día completo se los llama ciclistas ocasionales. Los clientes que compran membresías anuales se llaman miembros de Cyclistic.
+
+Los analistas financieros de Cyclistic llegaron a la conclusión de que los miembros anuales son mucho más rentables que los ciclistas ocasionales. Aunque la flexibilidad de precios ayuda a Cyclistic a atraer más clientes, Moreno cree que maximizar el número de miembros anuales será clave para el crecimiento futuro. En lugar de crear una campaña de marketing que apunte a todos los clientes nuevos, Moreno cree que hay muchas posibilidades de convertir a los ciclistas ocasionales en miembros. Ella señala que los ciclistas ocasionales ya conocen el programa de Cyclistic y han elegido a Cyclistic para sus necesidades de movilidad.
+
+Moreno estableció una meta clara: Diseñar estrategias de marketing orientadas a convertir a los ciclistas ocasionales en miembros anuales. Sin embargo, para hacer eso, el equipo de analistas de marketing necesita entender mejor cómo difieren los miembros anuales y los ciclistas ocasionales, por qué los ciclistas ocasionales comprarían una membresía y cómo los medios digitales podrían afectar sus tácticas de marketing. Moreno y su equipo están interesados en analizar los datos históricos de viajes en bicicleta de Cyclistic para identificar tendencias.
+
+# Pasos a seguir
+
+En este proayecto utilizaremos las seis etapas de analisis de datos:
+
+●     **Preguntar:** En esta etapa se identifican las preguntas claves junto a los interesados.
+
+●     **Preparar:** Reunir los datos, identificar como esta organizada y se determina la credibilidad de los datos.
+
+●     **Procesar:** Se elige la herramienta de limpieza de los datos, se revisa por errores y se documentan todos los cambios realizados.
+
+●     **Analizar:** Se organiza y se da formato a los datos, se realizan los calculos y se identifican las relaciones y tendencias.
+
+●     **Compartir:** Usando los principios de pensamiento de diseño y la narracion basada en datos, se presentan los hallazgos con visualizaciones efectivas, asegurandose de responder la tarea empresarial.
+
+●     **Actuar:** Se comparte la conclusion final y las recomendaciones.
+
+# ETAPA 01
+
+## Preguntar
+
+Objetivo: Identificar los tipos de membresia y analizarlos para descubrir tendencias del uso del servicio para preparar una estrategia publicitaria que permita convertir a usuarios casuales en miembros anuales.
+
+Intaeresados: Lily moreno quien es la directora de marketing y gerente, ademas de el equipo ejecutivo quienes deciden si aprueba el programa de marketing recomendado.
+
+# ETAPA 02
+
+## Preparar
+
+Para este proyecto, usaremos los datos publicos del historial de viajes proporcionados por [Motivate International Inc](https://divvy-tripdata.s3.amazonaws.com/index.html). Bajo esta [licencia](https://ride.divvybikes.com/data-license-agreement) de libre uso, es la data completa de todos los viajes que realizaron los usuarios de esta empresa de bicicletas durante el periodo 08-2024 al 07-2024 y aunque no cuentan con vinculaciones de pagos ni forma de identificar clientes con nombre real, lo que impide confirmar si un mismo cliente realizo más de un viaje en un solo día, son apropiados, además respetan la privacidad de los usuarios de la empresa y permiten responder las preguntas de este caso practico bajo el nombre ficticio Cyclistic.
+
+Los datos Incluyen
+
+Id del viaje, duración, ubicación inicial, ubicación final y tipo de miembro que realizo el viaje
+
+Todo separado por mes
+
+# ETAPA 03 y 04
+
+## Procesar y analizar
+
+Debido a la gran cantidad de datos en esta base decidi no utilizar excel ya que puede ser inestable y algo lento al manejar demasiados datos. podria haber utilizado SQL para la limpieza y el analisis de los datos pero me incline por la version de escritorio de Rstudio debido a que queria hacerlo todo en un solo lugar sin necesidad de estar cambiando de herramientas
+
+por lo que empezaremos preparando nuestro entorno de trabajo
+
+### Instalando las librerias necesarias de ser necesario
+
+```{r paquetes, echo=TRUE, eval=FALSE, warning=FALSE}
+install.packages("tidyverse")
+
+```
+
+Nota: En la version de escritorio esto solo se hace una vez, ya que los paquetes quedan instalados y disponibles para todos los futuros proyectos y solo debemos cargarlos para utilizarlos.
+
+### Cargamos las librerias a tuilizar
+
+```{r librerias, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+### Almacenamos los datos de los archivos .csv en vectores para su uso en R
+
+```{r cargardatos}
+data01 <- read.csv("202308data.csv")
+data02 <- read.csv("202309data.csv")
+data03 <- read.csv("202310data.csv")
+data04 <- read.csv("202311data.csv")
+data05 <- read.csv("202312data.csv")
+data06 <- read.csv("202401data.csv")
+data07 <- read.csv("202402data.csv")
+data08 <- read.csv("202403data.csv")
+data09 <- read.csv("202404data.csv")
+data10 <- read.csv("202405data.csv")
+data11 <- read.csv("202406data.csv")
+data12 <- read.csv("202407data.csv")
+```
+
+Nota: Los archivos descargados fueron renombrados para mejor legibilidad y fueron ubicados en el directorio principal del proyecto para evitar problemas de ruta en los archivos.
+
+### Ahora verificamos que la estructura de todos los vectores sean iguales.
+
+```{r estructura}
+glimpse(data01)
+glimpse(data02)
+glimpse(data03)
+glimpse(data04)
+glimpse(data05)
+glimpse(data06)
+glimpse(data07)
+glimpse(data08)
+glimpse(data09)
+glimpse(data10)
+glimpse(data11)
+glimpse(data12)
+```
+
+Con esto ya podemos ver como estan conformados los datos y nos encontramos que las variables started_at y ended_at que estan en tipo caracter y deben convertirse a fecha para poder analizar correctamente la información pero antes vamos a unir todos los vectores en un solo conjunto de datos
+
+### Unimos Vectores en solo
+
+```{r unirvectores}
+DatosViajes <- bind_rows(data01,data02,data03,data04,data05,data06,data07,data08,data09,data10,data11,data12)
+totaldatosiniciales <- dim(DatosViajes)
+cat("Cantidad de filas del conjunto de datos:", totaldatosiniciales[1], "\n")
+cat("Cantidad de variables del conjunto de datos:", totaldatosiniciales[2], "\n") 
+```
+
+lo que nos deja un conjunto de datos de 13 variables y 5.715.693 filas
+
+```{r colnames}
+colnames(DatosViajes)
+```
+
+### Renombre de columnas y datos al español para legibilidad del caso
+
+```{r rename01}
+# Cambiar nombres de columnas
+DatosViajes <- DatosViajes %>%
+  rename(
+    id_viaje = ride_id,
+    tipo_bicicleta = rideable_type,
+    inicio_viaje = started_at,
+    fin_viaje = ended_at,
+    estacion_inicial = start_station_name,
+    estacion_inicial_id = start_station_id,
+    estacion_final = end_station_name,
+    estacion_final_id = end_station_id,
+    lat_inicial = start_lat,
+    long_inicial = start_lng,
+    lat_final = end_lat,
+    long_final = end_lng,
+    tipo_usuario = member_casual
+  )
+```
+
+```{r rename02}
+DatosViajes <- DatosViajes %>%
+  mutate(tipo_usuario = case_when(
+    tipo_usuario == "member" ~ "miembro",
+    TRUE ~ tipo_usuario  # Mantener el valor original si no coincide
+  ))
+```
+
+```{r rename03}
+DatosViajes <- DatosViajes %>%
+  mutate(tipo_bicicleta = case_when(
+    tipo_bicicleta == "electric_bike" ~ "bici_electrica",
+    tipo_bicicleta == "classic_bike" ~ "bici_clasica",
+    tipo_bicicleta == "docked_bike" ~ "bici_compartida",
+    TRUE ~ tipo_bicicleta  # Mantener el valor original si no coincide
+  ))
+```
+
+### Verificamos valores nulos
+
+```{r nulosoespacios}
+nulos_y_espacios_df <- DatosViajes %>%
+  summarise_all(~ sum(is.na(.) | str_trim(.) == "")) %>%
+  pivot_longer(cols = everything(), names_to = "Variables", values_to = "Nulos_o_Espacios")
+print(nulos_y_espacios_df)
+```
+
+-   `str_trim(.)` elimina los espacios en blanco al inicio y al final de cada cadena.
+
+-   `str_trim(.) == ""` verifica si, después de eliminar los espacios, la cadena es vacía.
+
+-   `is.na(.) | str_trim(.) == ""` verifica si el valor es `NA` o si es una cadena de caracteres que consiste únicamente en espacios en blanco.
+
+-   `summarise_all(~ sum(...))` cuenta cuántos valores en cada columna cumplen cualquiera de las dos condiciones.
+
+-   `pivot_longer()` organiza el resultado en un formato largo con una columna `Columna` que contiene los nombres de las columnas de `DatosViajes` y otra columna `Nulos_o_Espacios` que contiene el número de valores nulos o que son solo espacios.
+
+Ahora podemos ver que hay muchos valores que solo contienen espacios o nulos tanto en nombres de estaciones como en latitudes y longitudes, pero a mi criterio esto no afecta el analisis final ya que aun conservamos la duracion de los viajes, los id unicos por viaje y el tipo de miembro, y si bien la representacion de los viajes geograficamente se vera ligeramente impedida no es algo que pueda afectar nuestro analisis por lo que vamos a conservar los datos.
+
+### Verificar que las variables no tengan datos equivocados o duplicados
+
+Solo existen dos tipos de miembros y tres tipos de bicicletas disponibles. Ademas cada viaje debe ser unico y para esto vemos si tenemos duplicados en la variable ride_id
+
+```{r verificacionvariables}
+cat("Tipos de miembros:",unique(DatosViajes$tipo_usuario), "\n")
+cat("Tipos de bicicletas:",unique(DatosViajes$tipo_bicicleta), "\n")
+n_duplicados <- sum(duplicated(DatosViajes$id_viaje))
+cat("Número de duplicados:", n_duplicados, "\n")
+```
+
+`duplicated()` devuelve un vector lógico que indica si un elemento en la es duplicado (TRUE) o no (FALSE).
+
+`sum()` cuenta el número de valores TRUE en ese vector, que corresponde al número de elementos duplicados.
+
+Como podemos apreciar no existen valores inconsistentes en las variables pero tenemos valores duplicados en la columna de ride_id la cual solo deberia contener valores unicos asi que vamos a analizar por que esta sucediendo esto.
+
+```{r resumenduplicados}
+Duplicados <- DatosViajes %>% filter(duplicated(id_viaje)) #extraemos lo valores a otra tabla
+glimpse(Duplicados)
+```
+
+Viendo los datos tenemos una hipotesis de por que sucede esto.\
+Los datos iniciales estaban divididos por mes y estos viajes tienen fecha de inicio el 31 de mayo y finalizan el 01 de junio por lo que esta podria ser la razon de estar duplicados asi que vamos a confirmar esta hipotesis buscando y contando los datos de nuestro nuevo conjunto duplicados en la data separada por mes.
+
+```{r comparacionduplicados}
+en_mayo <- sum(Duplicados$id_viaje %in% data10$ride_id) #siendo data10 la carga de datos del 2024-05
+en_junio <- sum(Duplicados$id_viaje %in% data11$ride_id) #siendo data10 la carga de datos del 2024-06
+# Imprimir los resultados
+cat("Número de duplicados encontrados anteriormente:", n_duplicados, "\n")
+cat("Conteo de duplicados en mayo:", en_mayo, "\n")
+cat("Conteo de duplicados en junio:", en_junio, "\n")
+```
+
+Como vemos confirmamos que los id de esos viajes se encuentran tanto en mayo como en junio por lo que ahora podemos eliminar los duplicados conociendo cual fue su causa. y volvemos a verificar que se realizo correctamente
+
+```{r}
+DatosViajes <- DatosViajes %>% distinct(id_viaje, .keep_all = TRUE) #conserva solo los datos unicos
+n_duplicados2 <- sum(duplicated(DatosViajes$id_viaje))
+cat("Actualización de duplicados:", n_duplicados2, "\n")
+```
+
+`distinct()` es una funcion del `dplyr` que selecciona los datos unicos de un conjunto
+
+### Limpieza de entorno de trabajo
+
+Ademas podemos eliminar algunos de los conjuntos temporales para limpiar un poco nuestro entorno de trabajo
+
+```{r eliminardatostemporales}
+remove(data01,data02,data03,data04,data05,data06,data07,data08,data09,data10,data11,data12,Duplicados,en_junio,en_mayo,n_duplicados2) 
+```
+
+### Calculamos la duración de los viajes usando las variables started_at y ended_at
+
+Pero antes debido a que estan como tipo character no se pueden realizar operaciones con estas columnas por lo que vamos a convertirlas a fechas con horas usando el comando **`ymd_hms()`** de la libreria **`lubridate()`**
+
+```{r convertirvariables}
+DatosViajes$inicio_viaje <- ymd_hms(DatosViajes$inicio_viaje)
+DatosViajes$fin_viaje <- ymd_hms(DatosViajes$fin_viaje)
+```
+
+`ymd_hms()` es una función de `lubridate` que convierte una cadena de caracteres en un objeto de fecha y hora.
+
+ahora si calculamos la duración de los viajes y verificamos la estructura de nuestros datos
+
+```{r duracionviajes}
+#para evitar que los valores sean mostrados como notacion cientifica usamos el siguiente comando y asi mantener una mejor legibilidad
+options(scipen=999)
+DatosViajes$duracion_viaje <- round(as.numeric(difftime(DatosViajes$fin_viaje, DatosViajes$inicio_viaje, units = "mins")),2)
+tibble(DatosViajes$id_viaje,DatosViajes$duracion_viaje)
+```
+
+-   `difftime()` calcula la diferencia entre dos fechas y horas.
+
+-   El argumento `units = "mins"` especifica que quieres la diferencia en minutos.
+
+-   `round(valor,2)` redondea el valor especificado a 2 decimales o cualquier otra cantidad especificada
+
+-   `as.numeric` da formato como numero
+
+Tambien podemos extraer los valores de la fecha por separado para nuestro analisis posterior, como solo nos interesa el inicio del viaje esa sera la fecha que usaremos de referencia para la creacion de los datos
+
+```{r datosfecha}
+DatosViajes$fecha <- as.Date(DatosViajes$inicio_viaje)
+DatosViajes$mes <- format(as.Date(DatosViajes$fecha),"%B") 
+DatosViajes$dia <- format(as.Date(DatosViajes$fecha), "%d")
+DatosViajes$ano <- format(as.Date(DatosViajes$fecha), "%Y")
+DatosViajes$diaDeLaSemana <- weekdays(DatosViajes$fecha)
+DatosViajes$hora <- format(DatosViajes$inicio_viaje, "%H")
+DatosViajes <- DatosViajes %>%
+  arrange(inicio_viaje)
+tibble(DatosViajes$id_viaje,DatosViajes$fecha,DatosViajes$mes,DatosViajes$dia,DatosViajes$ano,DatosViajes$diaDeLaSemana)
+```
+
+-   `as.Date()` da formato como fecha
+
+-   `format(valor,criterio)` dependiendo del criterio separa una parte del dato ingresado.
+
+-   `weekdays` regresa el dia de la semana en texto segun una fecha
+
+### Renombrar dias y meses
+
+```{r rename04}
+DatosViajes <- DatosViajes %>%
+  mutate(mes = case_when(
+    mes == "January" ~ "Enero",
+    mes == "February" ~ "Febrero",
+    mes == "March" ~ "Marzo",
+    mes == "April" ~ "Abril",
+    mes == "May" ~ "Mayo",
+    mes == "June" ~ "Junio",
+    mes == "July" ~ "Julio",
+    mes == "August" ~ "Agosto",
+    mes == "September" ~ "Septiembre",
+    mes == "October" ~ "Octubre",
+    mes == "November" ~ "Noviembre",
+    mes == "December" ~ "Diciembre",
+    TRUE ~ mes  # Mantener el valor original si no coincide
+  ))
+
+DatosViajes <- DatosViajes %>%
+  mutate(diaDeLaSemana = case_when(
+    diaDeLaSemana == "Sunday" ~ "Domingo",
+    diaDeLaSemana == "Monday" ~ "Lunes",
+    diaDeLaSemana == "Tuesday" ~ "Martes",
+    diaDeLaSemana == "Wednesday" ~ "Miercoles",
+    diaDeLaSemana == "Thursday" ~ "Jueves",
+    diaDeLaSemana == "Friday" ~ "Viernes",
+    diaDeLaSemana == "Saturday" ~ "Sabado",
+        TRUE ~ diaDeLaSemana  # Mantener el valor original si no coincide
+  ))
+```
+
+-   `mutate()` crea, modifica o elimina datos
+
+-   `case_when` condicional, solo actua cuando se cumple la condicion.
+
+### Duraciones de viajes iguales o menores a cero
+
+Ahora que tenemos la duración vamos a confirmar que todas las duraciones sean superiones a cero
+
+```{r conteocero}
+conteocero <- sum(DatosViajes$duracion_viaje <= 0)
+cat("Conteo de duraciones menores o iguales a cero:", conteocero, "\n")
+```
+
+Existen casos por lo que vamos a verificar esto.
+
+```{r verificarcero}
+menoscero <- DatosViajes %>% filter(DatosViajes$duracion_viaje <= 0)
+tibble(menoscero$id_viaje,menoscero$inicio_viaje,menoscero$fin_viaje,menoscero$duracion_viaje)
+```
+
+La función `filter()` de `dplyr` selecciona solo las filas que cumplen con la condición especificada.
+
+Vemos como efectivamente los tiempos de llegada son iguales o inferiores a los de partida. en algunos casos por pocos segundos, en otros por multiples minutos, y aunque los datos de longitud y latitud muestran cambios no podemos consultar para verificar si existe un error, en este caso simplemente vamos a eliminarlos y aprovechar de eliminar nuestra tabla temporal
+
+```{r eliminarcero}
+DatosViajes <- DatosViajes %>% filter(duracion_viaje > 0)
+remove(menoscero)
+```
+
+### Viajes de más de 24 horas
+
+Tambien podemos verificar los viajes superiores a 24 horas
+
+```{r viajeslargos}
+viajes_largos <- DatosViajes %>%
+    filter(duracion_viaje > 1440) #el tiempo esta en minutos 1440mins / 60 = 24 horas
+ViajesLargos <- nrow(viajes_largos)
+cat("Numero de viajes de más de 24 horas:",ViajesLargos, "\n")
+glimpse(viajes_largos)
+```
+
+-   `nrow()` cuenta el total de filas de un conjunto de datos
+
+Se aprecian muchos NA y vacios en este conjunto de datos por lo que vamos a contarlos
+
+```{r nulosviajeslargos}
+nulos_y_espacioslargos_df <- viajes_largos %>%
+    summarise_all(~ sum(is.na(.) | str_trim(.) == "")) %>%
+    pivot_longer(cols = everything(), names_to = "Variables", values_to = "Nulos_o_Espacios")
+print(nulos_y_espacioslargos_df)
+```
+
+Anteriormente detectamos 7756 valores nulos en end_lat sobre todo el conjunto de viajes, ahora podemos apreciar que 7559 pertenecen a este segmento de datos, cuando el conjunto de referencia es de 7958 supone una cantidad importante de valores. Esto podria ser resultado de varios factores como la baja de bicicletas por parte de la compañia, hurto, o errores del sistema, aunque igual que anteriormente no tenemos forma de verificarlo en esta instancia por lo que eliminaremos los viajes de mas de 24 horas,\
+es posible que existan mas casos en segmentos menores como de 12 a 24 horas o menos en algunos casos, pero no son un factor que pueda alterar en gran medida debido al gran volumen de datos disponibles.
+
+```{r noviajeslargos}
+DatosViajes <- DatosViajes %>% filter(duracion_viaje <= 1440)
+```
+
+### Resumen de viajes
+
+```{r resumenduracion}
+#Comparacion tipo de miembro
+DatosViajes %>%
+    group_by(tipo_usuario) %>%
+    summarise(DuracionPromedio = mean(duracion_viaje), DuracionMaxima = max(duracion_viaje), DuracionMinima = min(duracion_viaje))
+```
+
+-   `group_by()` Agrupa una o mas variables
+
+-   `summarise()` hace un resumen de cada grupo en unsa sola columna
+
+-   `mean()` calcula el promedio de una cantidad de datos, Suma todos los valores / cantidad de valores
+
+Dado los datos los tiempos promedios de los usuarios casuales son mayores a los miembros.
+
+```{r mediapordia}
+DatosViajes$diaDeLaSemana <- ordered(DatosViajes$diaDeLaSemana, levels=c("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"))
+
+Viajespordia <- DatosViajes %>%
+    group_by(tipo_usuario, diaDeLaSemana) %>%
+    summarise(Num_de_viajes = n(), DuracionPromedio = mean(duracion_viaje),.groups = "drop") %>%
+    arrange(tipo_usuario, diaDeLaSemana)
+print(Viajespordia)
+```
+
+-   `ordered()` se utiliza para crear un factor **ordenado**. Un factor ordenado es una variable cuyos niveles tienen un orden especifico
+-   `levels=c()` se usa para especificar el orden de los niveles
+-   `.groups = "drop"` es el critero quie se usa para separar los grupos que se hiceron antes, no es estrictamente necesario pero es una buena practica
+-   `arrange()` se utiliza para ordenar las filas de una data frame segun los valores de una o mas columnas
+
+Tambien podemos apreciar una tendencia a mas cantidad de viajes hacia los fines de semana para usuarios casuales y mayor cantidad de viajes durante la semana para los miembros.\
+lo cual podria ser explicado que el usuario casual busca un uso mas recreativo mientras que los miembros utilizan el servicio como movilizacion diaria a sus trabajos, de alli tambien la diferencia en tiempos de viaje entre los tipos de usuarios.
+
+```{r viajespormes}
+DatosViajes$mes <- ordered(DatosViajes$mes, levels=c("Agosto", "Septiembre", "Octubre", "Noviembre","Diciembre","Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"))
+
+Viajespormes <- DatosViajes %>%
+    group_by(tipo_usuario, mes) %>%
+    summarise(Num_de_viajes = n(), DuracionPromedio = mean(duracion_viaje),.groups = "drop") %>%
+    arrange(tipo_usuario, mes)
+print(Viajespormes)
+```
+
+Con estos datos podemos apreciar que existen meses una tendencia al uso del servicio en meses mas calidos
+
+```{r viajeshorausuario}
+ViajesPorHoraUsuario <- DatosViajes %>%
+  group_by(hora, tipo_usuario) %>%
+  summarise(Num_de_viajes = n(),.groups = "drop") %>%
+  arrange(as.numeric(hora), tipo_usuario)  # Ordena las horas numéricamente y por tipo de usuario
+
+```
+
+con esto tenemos un resumen de los horarios preferidos por cada segmento
+
+### Registro de latitudes y longitudes
+
+para uso posterior vamos a almacenar estos valores
+
+```{r ubicacionestemporales}
+NuevoConjunto <- DatosViajes %>%
+  select(id_viaje, lat_inicial, lat_final, long_inicial, long_final, tipo_usuario)
+#### como no puede haber valores nulos o vacios en las latitudes y longitudes en este conjunto si vamos a eliminar esos valores
+NuevoConjunto <- NuevoConjunto %>%
+  filter(
+    !is.na(lat_inicial) & lat_inicial != "" &
+    !is.na(lat_final) & lat_final != "" &
+    !is.na(long_inicial) & long_inicial != "" &
+    !is.na(long_final) & long_final != ""
+  )
+
+```
+
+### Conteo de valores eliminados
+
+```{r conteoeliminados}
+totaldatosfinales <-  totaldatosiniciales[1] - n_duplicados - conteocero - ViajesLargos
+cat("Iniciamos el analisis con:",totaldatosiniciales[1], "\n")
+cat("Eliminamos: ",n_duplicados," datos duplicados \n")
+cat("Eliminamos: ",conteocero," viajes con duración igual o menos a cero \n")
+cat("Eliminamos: ",ViajesLargos, "Viajes de mas de 24 horas de duración \n")
+cat("Total de datos para el analisis: ",totaldatosfinales)
+```
+
+# ETAPA 05
+
+## Compartir
+
+Los resultados obtenidos seran representados visualmente en esta etapa.
+
+Iniciamos haciendo referencia al conjunto de datos utilizado el cual se compone por el periodo de 12 meses de actividades de la empresa Ciclystic entre Agosto del 2023 y Julio del 2024
+
+```{r graficoviajesmes}
+ggplot(DatosViajes, aes(x = mes)) + #crea nuestro plano cartesiano basado en la variable 
+  geom_bar(aes(y = after_stat(count)), fill = "skyblue", color = "black") + #define el grafico como barras y cuenta cuantas veces aparece la variable, colorea el relleno y crea un outline
+  geom_text( #se encarga de agregar el texto sobre las barras
+    aes(label = after_stat(count)), 
+    stat = "count", 
+    vjust = -0.5,  # Ajusta la posición vertical de las etiquetas
+    color = "black",
+    size = 3
+  ) +
+  labs( #crea los tutilos del grafico
+    title="Viajes por mes - Cyclistic",
+    subtitle = "Periodo Agosto 2023 - Julio 2024",
+    x = "Mes",
+    y = "Número de Viajes",
+    caption = "Base de datos Cyclistic - Empresa Ficticia"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) #gira la leyenda inferior
+```
+
+El grafico anterior solo considera la totalidad de viajes hechos por mes sin discrimirar entre tipos de usuarios, por lo que podemos apreciar la tendencia de mayor uso del servicio en ciertos meses. esto es posiblemente debido a cambios en las estaciones y la temperatura exterior durante el año.
+
+```{r graficoviajesmesusuarios}
+ ggplot(Viajespormes, aes(x = mes, y = Num_de_viajes, fill = tipo_usuario)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") + # utiliza identity para que ggplot use directamente el valor de numero de viajes
+  geom_text(
+    aes(label = Num_de_viajes), 
+    position = position_dodge2(width = 0.9),  # Ajusta la posición horizontal de las etiquetas
+    vjust = 0.4,  # Ajusta la posición vertical de las etiquetas
+    hjust = -0.1, # ajusta el texto para estar sobre la barra
+    angle = 90,    # Gira el texto a 90 grados para que sea vertical
+    color = "black",
+    size = 3
+  ) +
+  labs(
+    title = "Viajes por Mes y Tipo de Usuario - Cyclistic",
+    subtitle = "Periodo Agosto 2023 - Julio 2024",
+    x = "Mes",
+    y = "Número de Viajes",
+    fill = "Tipo de Usuario",
+    caption = "Base de datos Cyclistic - Empresa Ficticia"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Mantén las etiquetas del eje x en ángulo
+    legend.position = "bottom" #cambia la leyenda para estar debajo de las barras en lugar del lado
+  ) +
+  scale_fill_manual(values = c(
+    "miembro" = "white",
+    "casual" = "skyblue"
+      )) +  # Reemplaza con los colores y tipos de usuario adecuados
+  coord_cartesian(ylim = c(0, max(Viajespormes$Num_de_viajes) * 1.3))  # Extiende el rango del eje y para que no se corte el texto
+
+```
+
+Aqui podemos apreciar que la mayoria de viajes son realizados por miembros durante todo el año.
+
+```{r graficoviajesdia}
+ggplot(data = Viajespordia, aes(x = diaDeLaSemana, y = Num_de_viajes, fill = tipo_usuario)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") + 
+  geom_text(
+    aes(label = Num_de_viajes), 
+    position = position_dodge(width = 0.9),  # Ajusta la posición horizontal de las etiquetas
+    vjust = -0.4,  # Ajusta la posición vertical de las etiquetas
+    color = "black",
+    size = 2.5
+  ) +
+  labs(
+    title = "Viajes por Día - Cyclistic",
+    subtitle = "Por Tipo de Usuario",
+    x = "Día de la Semana",
+    y = "Número de Viajes",
+    fill = "Tipo de Usuario",
+    caption = "Base de datos Cyclistic - Empresa Ficticia"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom"
+  ) +
+  scale_fill_manual(values = c(
+    "miembro" = "white",
+    "casual" = "skyblue"
+  )) # Ajusta los colores según tus categorías
+  
+
+```
+
+Como se ve en el grafico los usuarios casuales realizan mas viajes los fines de semana y los miembros mas viajes durante la semana. Indicando la posibilidad de que los miembros usen principalmente el servicio para llegar a sus trabajos y los casuales lo usan de manera mas recreacional. pero aun necesitamos ver un poco mas a fondo para respaldar esta hipotesis.
+
+```{r promediodia}
+ggplot(data = Viajespordia, aes(x = diaDeLaSemana, y = DuracionPromedio, fill = tipo_usuario)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +  # Crea las barras y las coloca lado a lado
+  geom_text(
+    aes(label = round(DuracionPromedio, 1)), 
+    position = position_dodge(width = 0.9),  # Ajusta la posición horizontal de las etiquetas
+    vjust = -0.5,  # Ajusta la posición vertical de las etiquetas
+    color = "black",
+    size = 2.5
+  ) +
+  labs(
+    title = "Duración Promedio de Viajes por Día - Cyclistic",
+    subtitle = "Por Tipo de Usuario",
+    x = "Día de la Semana",
+    y = "Duración Promedio (minutos)",
+    fill = "Tipo de Usuario",
+    caption = "Base de datos Cyclistic - Empresa Ficticia"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom"
+  ) +
+  scale_fill_manual(values = c(
+    "miembro" = "white",
+    "casual" = "skyblue"
+  )) +  # Ajusta los colores según tus categorías
+   coord_cartesian(ylim = c(0, max(Viajespordia$DuracionPromedio, na.rm = TRUE) * 1.1))  # Extiende el rango del eje y
+
+```
+
+Como podemos apreciar la duracion de los viajes en promedio es mayor para el usuario causal, lo que sustenta nuestra sobre su uso principalmente recreativo de las bicicletas y mas corto para los miembros quienes usan el servicio usualmente como medio de transporte para sus trabajos, esto tambien explicaria que la cantidad de viajes sean mayores dentro de la categoria de miembros ya que deben utilizar el servicio multiples veces al dia.
+
+```{r tiposbicicleta}
+# Crear el gráfico de barras con control del ancho y altura
+ggplot(data = DatosViajes, aes(x = tipo_bicicleta)) +
+  geom_bar(
+    aes(y = after_stat(count)), 
+    fill = "skyblue", 
+    color = "black", 
+    width = 0.3  # Ajusta el ancho de las barras; valores menores a 1 las hacen más delgadas
+  ) +  
+  geom_text(
+    aes(label = after_stat(count)), 
+    stat = "count", 
+    vjust = -0.5,  
+    color = "black",
+    size = 3
+  ) +
+  labs(
+    title = "Viajes por Tipo de Bicicleta - Cyclistic",
+    subtitle = "Periodo Agosto 2023 - Julio 2024",
+    x = "Tipo de Bicicleta",
+    y = "Número de Viajes",
+    caption = "Base de datos Cyclistic - Empresa Ficticia"
+  ) +
+  theme_minimal() +
+  coord_cartesian(ylim = c(0, max(table(DatosViajes$tipo_bicicleta)) * 1.2))   # Ajusta el rango del eje Y basado en los conteos reales
+```
+
+Otra cosa que podemos apreciar es la preferencia por bicicletas clasicas o electricas y poco interes en bicicletas compartidas
+
+```{r graficohoracausal}
+# Crear el gráfico filtrando los usuarios casuales directamente
+ggplot(data = ViajesPorHoraUsuario %>% filter(tipo_usuario == "casual"), aes(x = hora, y = Num_de_viajes, fill = tipo_usuario)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +  # Define el gráfico como barras
+  geom_text(
+    aes(label = Num_de_viajes),
+    position = position_dodge(width = 0.9),  # Ajusta la posición horizontal de las etiquetas
+    vjust = 0.4,  # Ajusta la posición vertical de las etiquetas
+    hjust = -0.1,  # Ajusta el texto para estar sobre la barra
+    angle = 90,    # Gira el texto a 90 grados para que sea vertical
+    color = "black",
+    size = 2.5
+  ) +
+  labs(
+    title = "Viajes por Hora del Día - Cyclistic",
+    subtitle = "Usuarios Casuales",
+    x = "Hora del Día",
+    y = "Número de Viajes",
+    fill = "Tipo de Usuario",
+    caption = "Base de datos Cyclistic - Empresa Ficticia"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rota las etiquetas del eje X para mejorar la legibilidad
+    legend.position = "bottom"  # Coloca la leyenda en la parte inferior
+  ) +
+  scale_fill_manual(values = c("casual" = "skyblue")) +  # Especifica el color para los usuarios casuales
+  coord_cartesian(ylim = c(0, max(ViajesPorHoraUsuario %>% filter(tipo_usuario == "casual") %>% pull(Num_de_viajes)) * 1.2))  # Extiende el rango del eje Y para que no se corte el texto
+
+```
+
+La tendencia muestra que los usuarios casuales arriendan con mayor frecuencia hacia las horas de la tarde
+
+```{r graficohoramiembro}
+ggplot(data = ViajesPorHoraUsuario %>% filter(tipo_usuario == "miembro"), aes(x = hora, y = Num_de_viajes, fill = tipo_usuario)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +  # Define el gráfico como barras
+  geom_text(
+    aes(label = Num_de_viajes),
+    position = position_dodge(width = 0.9),  # Ajusta la posición horizontal de las etiquetas
+    vjust = 0.4,  # Ajusta la posición vertical de las etiquetas
+    hjust = -0.1,  # Ajusta el texto para estar sobre la barra
+    angle = 90,    # Gira el texto a 90 grados para que sea vertical
+    color = "black",
+    size = 2.5
+  ) +
+  labs(
+    title = "Cantidad de Viajes por Hora del Día - Miembros",
+    x = "Hora del Día",
+    y = "Número de Viajes",
+    fill = "Tipo de Usuario",
+    caption = "Base de datos Cyclistic - Empresa Ficticia"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rota las etiquetas del eje X para mejorar la legibilidad
+    legend.position = "none"  # Oculta la leyenda ya que solo hay un tipo de usuario
+  ) +
+  scale_fill_manual(values = c("miembro" = "skyblue")) +  # Especifica el color para los usuarios miembros
+  coord_cartesian(ylim = c(0, max(ViajesPorHoraUsuario %>% filter(tipo_usuario == "miembro") %>% pull(Num_de_viajes)) * 1.2))  # Extiende el rango del eje Y para que no se corte el texto
+```
+
+Mientras que al observar a los miembros vemos como las tendencias aumentan en horarios que coinciden con el horario laboral normal de la mayoria de las personas lo que reitera el tipo de uso que da cada usuario al servicio.
+
+# ETAPA 06
+
+## Actuar
+
+Luego de analizar y establecer algunas de las diferencias entre los tipos de usuario podriamos recomendar algunas estrategias para persuadir a los usuarios casuales a hacer una transicion a miembros
+
+1.  Realizar campañas de marketing sobre todo en epocas de primavera y verano en lugares turisticos y recreacionales populares enre usuarios casuales. para esto se pueden analizar el agrupamiento de las coordenadas de inicio y final de los viajes casuales estableciendo periodos de tiempos especificos para evaluar tendencias y ser mas especificos.
+
+2.  Los usuarios casuales son mas activos en los fines de semana y por tempradas, por lo que una buena opcion seria crear y ofrecer una membresia por temporada o exclusiva de fines de semana.
+
+3.  Tambien podemos apreciar como la duracion de los viajes es mayor para usuarios casuales. Ofrecer descuentos para viajes largos podria ser un incentivo para atraer usuarios casuales a adquirir membresias y tambien motivar a los miembros a realizar viajes mas largos.
